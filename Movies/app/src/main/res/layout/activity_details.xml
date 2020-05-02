@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/movieDetailsCoordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ScrollingActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/movieDetailsAppbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:background="@color/colorBluet"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/movieDetailsCollapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:contentScrim="@color/colorBluet"
+                app:expandedTitleMarginEnd="64dp"
+                app:expandedTitleMarginStart="48dp"
+                app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:titleEnabled="false">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/imagesWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/movieDetailBackdrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="235dp"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="fitXY"
+                        app:layout_collapseMode="parallax"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:background="@drawable/placeholder" />
+
+                    <FrameLayout
+                        android:id="@+id/imageContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="150dp"
+                        android:background="#fff"
+                        android:padding="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/movieDetailsPosterPath"
+                            android:layout_width="100dp"
+                            android:layout_height="125dp"
+                            android:elevation="5dp"
+                            android:transitionName="thumbnail"
+                            android:background="@color/colorBluet"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/placeholder" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/detailsMovieTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:singleLine="true"
+                        android:text="Movie Title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+                        app:layout_constraintEnd_toEndOf="@+id/imageContainer"
+                        app:layout_constraintStart_toStartOf="@+id/imageContainer" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/movieDetailsToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/movieDetailsTabs"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="bottom"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:tabIndicatorColor="@android:color/white" />
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/movieDetailsFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_star_border"
+            app:fabSize="normal"
+            app:layout_anchor="@id/movieDetailBackdrop"
+            app:layout_anchorGravity="bottom|end|right" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/movieDetailsViewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

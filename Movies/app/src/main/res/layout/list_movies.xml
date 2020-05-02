@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MoviesActivity"
+    android:paddingHorizontal="4dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        app:cardCornerRadius="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBluet"
+            >
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:scaleType="fitXY"
+                android:transitionName="thumbnail"
+                android:elevation="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/placeholder" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:textColor="@color/colorBabyPink"
+                android:transitionName="date"
+                android:elevation="5dp"
+                android:text="2018"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="@+id/thumbnail"
+                app:layout_constraintStart_toStartOf="@+id/thumbnail"
+                app:layout_constraintTop_toBottomOf="@+id/thumbnail" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
