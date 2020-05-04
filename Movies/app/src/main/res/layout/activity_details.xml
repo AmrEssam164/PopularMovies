@@ -76,6 +76,7 @@
                         android:ellipsize="marquee"
                         android:marqueeRepeatLimit="marquee_forever"
                         android:paddingTop="12dp"
+                        android:paddingHorizontal="4dp"
                         android:paddingBottom="12dp"
                         android:singleLine="true"
                         android:text="Movie Title"

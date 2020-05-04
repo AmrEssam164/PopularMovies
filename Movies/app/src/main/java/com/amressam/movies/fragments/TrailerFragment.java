@@ -41,7 +41,7 @@ public class TrailerFragment extends Fragment implements TrailerRecyclerViewAdap
     @Override
     public void onTrailerClicked(String video_id) {
         Intent intent = null;
-        intent = YouTubeStandalonePlayer.createVideoIntent(Objects.requireNonNull(getActivity()), YoutubeActivity.GOOGLE_API_KEY, video_id, 0, true, true);
+        intent = YouTubeStandalonePlayer.createVideoIntent(Objects.requireNonNull(getActivity()), getResources().getString(R.string.youtube_api_key), video_id, 0, true, true);
         if (intent != null) {
             startActivity(intent);
         }

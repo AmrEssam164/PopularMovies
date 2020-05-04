@@ -2,6 +2,7 @@ package com.amressam.movies;
 
 import android.content.ContentResolver;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -26,6 +27,8 @@ import java.util.ArrayList;
 
 public class MoviesActivity extends AppCompatActivity {
 
+
+    public static Resources mResource;
     private static final String TAG = "MainActivity";
     ActivityMoviesBinding mActivityMoviesBinding;
     private com.amressam.movies.MoviesRecyclerViewAdapter mMoviesRecyclerViewAdapter;
@@ -55,6 +58,7 @@ public class MoviesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mActivityMoviesBinding = DataBindingUtil.setContentView(this, R.layout.activity_movies);
 
+        mResource = getResources();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources()
