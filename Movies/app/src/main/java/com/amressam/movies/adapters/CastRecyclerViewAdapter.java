@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -26,14 +27,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CastRecyclerViewAdapter extends RecyclerView.Adapter<CastRecyclerViewAdapter.ViewHolder> {
 
 
-    private List<Cast> mCastList;
+    private ArrayList<com.amressam.movies.Cast> mCastList;
 
     private Context mContext;
 
 
 
 
-    public CastRecyclerViewAdapter(List<Cast> castList, Context context) {
+    public CastRecyclerViewAdapter(ArrayList<com.amressam.movies.Cast> castList, Context context) {
         mCastList = castList;
         mContext = context;
     }
@@ -49,7 +50,7 @@ public class CastRecyclerViewAdapter extends RecyclerView.Adapter<CastRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         // called by the layout manager when it wants new data in an existing row
-        final Cast castItem = mCastList.get(position);
+        final com.amressam.movies.Cast castItem = mCastList.get(position);
         Picasso.get().load(castItem.getImage())
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.placeholder)
@@ -64,7 +65,7 @@ public class CastRecyclerViewAdapter extends RecyclerView.Adapter<CastRecyclerVi
     }
 
 
-    public void loadNewData(List<Cast> newCast) {
+    public void loadNewData(ArrayList<com.amressam.movies.Cast> newCast) {
         this.mCastList = newCast;
         notifyDataSetChanged();
     }

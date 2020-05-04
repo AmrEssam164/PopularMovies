@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -19,7 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class TrailerRecyclerViewAdapter extends RecyclerView.Adapter<TrailerRecyclerViewAdapter.ViewHolder> {
 
 
-    private List<com.amressam.movies.Trailer> mTrailerList;
+    private ArrayList<com.amressam.movies.Trailer> mTrailerList;
 
     private Context mContext;
 
@@ -31,7 +32,7 @@ public class TrailerRecyclerViewAdapter extends RecyclerView.Adapter<TrailerRecy
     }
 
 
-    public TrailerRecyclerViewAdapter(List<com.amressam.movies.Trailer> castList, Context context, TrailerRecyclerViewAdapter.AdapterOnClickHandler clickHandler) {
+    public TrailerRecyclerViewAdapter(ArrayList<com.amressam.movies.Trailer> castList, Context context, TrailerRecyclerViewAdapter.AdapterOnClickHandler clickHandler) {
         mTrailerList = castList;
         mContext = context;
         mClickHandler=clickHandler;
@@ -63,7 +64,7 @@ public class TrailerRecyclerViewAdapter extends RecyclerView.Adapter<TrailerRecy
     }
 
 
-    public void loadNewData(List<com.amressam.movies.Trailer> newTrailer) {
+    public void loadNewData(ArrayList<com.amressam.movies.Trailer> newTrailer) {
         this.mTrailerList = newTrailer;
         notifyDataSetChanged();
     }

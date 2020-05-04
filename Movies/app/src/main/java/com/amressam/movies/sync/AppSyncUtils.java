@@ -239,6 +239,11 @@ public class AppSyncUtils {
                 }
                 else{
                     Log.d(TAG, "doInBackground: cast table isn't empty");
+//                    context.getContentResolver().delete(
+//                            ReviewsContract.CONTENT_URI,
+//                            null,
+//                            null);
+//                    startImmediateSyncForReviews(context);
                 }
 
                 cursor.close();

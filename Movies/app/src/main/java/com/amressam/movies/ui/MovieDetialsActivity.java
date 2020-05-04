@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -27,9 +29,9 @@ import java.util.ArrayList;
 public class MovieDetialsActivity extends AppCompatActivity{
 
     ActivityDetailsBinding mActivityDetailsBinding;
-    public static ArrayList<Cast> cast = null;
-    public static ArrayList<Trailer> trailers = null;
-    public static ArrayList<Reviews> reviews = null;
+    public static ArrayList<com.amressam.movies.Cast> cast = null;
+    public static ArrayList<com.amressam.movies.Trailer> trailers = null;
+    public static ArrayList<com.amressam.movies.Reviews> reviews = null;
     private static final String TAG = "MovieDetialsActivity";
     public static String selectedReview;
     boolean favourite;
@@ -60,7 +62,7 @@ public class MovieDetialsActivity extends AppCompatActivity{
             ReviewsContract.Columns.REVIEW_TEXT};
     public static final int INDEX_REVIEW_AUTHOR = 1;
     public static final int INDEX_REVIEW_TEXT = 2;
-    public static Movie movieItem;
+    public static com.amressam.movies.Movie movieItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,9 +84,9 @@ public class MovieDetialsActivity extends AppCompatActivity{
             setFavourite();
             new queryData().execute();
         } else {
-            cast = (ArrayList<Cast>) savedInstanceState.getSerializable(CAST_STATE);
-            trailers = (ArrayList<Trailer>) savedInstanceState.getSerializable(TRAILERS_STATE);
-            reviews = (ArrayList<Reviews>) savedInstanceState.getSerializable(REVIEWS_STATE);
+            cast = (ArrayList<com.amressam.movies.Cast>) savedInstanceState.getSerializable(CAST_STATE);
+            trailers = (ArrayList<com.amressam.movies.Trailer>) savedInstanceState.getSerializable(TRAILERS_STATE);
+            reviews = (ArrayList<com.amressam.movies.Reviews>) savedInstanceState.getSerializable(REVIEWS_STATE);
             favourite = savedInstanceState.getBoolean(FAVOURITE_STATE);
         }
 
@@ -130,7 +132,7 @@ public class MovieDetialsActivity extends AppCompatActivity{
 
     private void setIntent(){
         Intent intent = getIntent();
-        movieItem = (Movie) intent.getSerializableExtra("NIDO");
+        movieItem = (com.amressam.movies.Movie) intent.getSerializableExtra("NIDO");
         loadMovieDetails(movieItem);
     }
 
@@ -181,7 +183,7 @@ public class MovieDetialsActivity extends AppCompatActivity{
         mActivityDetailsBinding.movieDetailsCollapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
     }
 
-    private void loadMovieDetails(Movie movieItem) {
+    private void loadMovieDetails(com.amressam.movies.Movie movieItem) {
         String image = movieItem.getImage();
 
         Picasso.get().load("http://image.tmdb.org/t/p/w500/" + image)
@@ -197,7 +199,15 @@ public class MovieDetialsActivity extends AppCompatActivity{
         mActivityDetailsBinding.detailsMovieTitle.setText(movieItem.getTitle());
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
+    }
 
     public class queryData extends AsyncTask<Void, Void, Void> {
 
@@ -230,18 +240,17 @@ public class MovieDetialsActivity extends AppCompatActivity{
                     , null);
             if (cursor != null) {
                 reviews = converted_review_cursor(cursor);
-
             }
 
             return null;
         }
     }
 
-    private ArrayList<Cast> converted_cast_cursor(Cursor cursor) {
-        ArrayList<Cast> convertedCast = new ArrayList<Cast>();
+    private ArrayList<com.amressam.movies.Cast> converted_cast_cursor(Cursor cursor) {
+        ArrayList<com.amressam.movies.Cast> convertedCast = new ArrayList<com.amressam.movies.Cast>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Cast cast = new Cast(cursor.getString(MovieDetialsActivity.INDEX_CAST_NAME)
+            com.amressam.movies.Cast cast = new com.amressam.movies.Cast(cursor.getString(MovieDetialsActivity.INDEX_CAST_NAME)
                     , cursor.getString(MovieDetialsActivity.INDEX_CAST_IMAGE));
             convertedCast.add(cast);
             cursor.moveToNext();
@@ -250,11 +259,11 @@ public class MovieDetialsActivity extends AppCompatActivity{
         return convertedCast;
     }
 
-    private ArrayList<Reviews> converted_review_cursor(Cursor cursor) {
-        ArrayList<Reviews> convertedReviews = new ArrayList<Reviews>();
+    private ArrayList<com.amressam.movies.Reviews> converted_review_cursor(Cursor cursor) {
+        ArrayList<com.amressam.movies.Reviews> convertedReviews = new ArrayList<com.amressam.movies.Reviews>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Reviews reviews = new Reviews(cursor.getString(MovieDetialsActivity.INDEX_REVIEW_AUTHOR)
+            com.amressam.movies.Reviews reviews = new com.amressam.movies.Reviews(cursor.getString(MovieDetialsActivity.INDEX_REVIEW_AUTHOR)
                     , cursor.getString(MovieDetialsActivity.INDEX_REVIEW_TEXT));
             convertedReviews.add(reviews);
             cursor.moveToNext();
@@ -263,11 +272,11 @@ public class MovieDetialsActivity extends AppCompatActivity{
         return convertedReviews;
     }
 
-    private ArrayList<Trailer> converted_trailer_cursor(Cursor cursor) {
-        ArrayList<Trailer> convertedTrailers = new ArrayList<Trailer>();
+    private ArrayList<com.amressam.movies.Trailer> converted_trailer_cursor(Cursor cursor) {
+        ArrayList<com.amressam.movies.Trailer> convertedTrailers = new ArrayList<com.amressam.movies.Trailer>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Trailer trailer = new Trailer(cursor.getString(MovieDetialsActivity.INDEX_TRAILER_NAME)
+            com.amressam.movies.Trailer trailer = new com.amressam.movies.Trailer(cursor.getString(MovieDetialsActivity.INDEX_TRAILER_NAME)
                     , cursor.getString(MovieDetialsActivity.INDEX_TRAILER_IMAGE)
                     , cursor.getString(MovieDetialsActivity.INDEX_TRAILER_ID));
             convertedTrailers.add(trailer);

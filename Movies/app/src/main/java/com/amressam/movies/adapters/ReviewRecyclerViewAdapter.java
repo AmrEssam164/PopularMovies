@@ -9,23 +9,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
+import java.util.ArrayList;
 
 public class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecyclerViewAdapter.ViewHolder> {
 
 
-    private List<Reviews> mReviewList;
+    private ArrayList<com.amressam.movies.Reviews> mReviewList;
 
     private Context mContext;
 
 
 
 
-    public ReviewRecyclerViewAdapter(List<Reviews> castList, Context context) {
+    public ReviewRecyclerViewAdapter(ArrayList<com.amressam.movies.Reviews> castList, Context context) {
         mReviewList = castList;
         mContext = context;
     }
@@ -41,7 +37,7 @@ public class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecycl
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         // called by the layout manager when it wants new data in an existing row
-        final Reviews reviewItem = mReviewList.get(position);
+        final com.amressam.movies.Reviews reviewItem = mReviewList.get(position);
         holder.author.setText(reviewItem.getAuthor());
         holder.content.setText(reviewItem.getReview());
     }
@@ -52,7 +48,7 @@ public class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecycl
     }
 
 
-    public void loadNewData(List<Reviews> newReview) {
+    public void loadNewData(ArrayList<com.amressam.movies.Reviews> newReview) {
         this.mReviewList = newReview;
         notifyDataSetChanged();
     }

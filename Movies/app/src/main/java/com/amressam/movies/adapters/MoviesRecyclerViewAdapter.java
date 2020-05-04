@@ -27,14 +27,14 @@ public class MoviesRecyclerViewAdapter extends RecyclerView.Adapter<MoviesRecycl
 
     private static final String TAG = "MoviesRecyclerViewAdapt";
 
-    private ArrayList<Movie> mMovies;
+    private ArrayList<com.amressam.movies.Movie> mMovies;
 
     private Context mContext;
 
 
 
 
-    public MoviesRecyclerViewAdapter(ArrayList<Movie> movies,Context context) {
+    public MoviesRecyclerViewAdapter(ArrayList<com.amressam.movies.Movie> movies,Context context) {
         mMovies=movies;
         mContext = context;
     }
@@ -49,7 +49,7 @@ public class MoviesRecyclerViewAdapter extends RecyclerView.Adapter<MoviesRecycl
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        final Movie movieItem = mMovies.get(position);
+        final com.amressam.movies.Movie movieItem = mMovies.get(position);
         Picasso.get().load("http://image.tmdb.org/t/p/w500/"+movieItem.getImage())
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.placeholder)
@@ -62,7 +62,7 @@ public class MoviesRecyclerViewAdapter extends RecyclerView.Adapter<MoviesRecycl
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, MovieDetialsActivity.class);
+                Intent intent = new Intent(mContext, com.amressam.movies.MovieDetialsActivity.class);
                 intent.putExtra("NIDO", (Serializable) movieItem);
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(holder.thumbnail, "thumbnail");
@@ -80,7 +80,7 @@ public class MoviesRecyclerViewAdapter extends RecyclerView.Adapter<MoviesRecycl
         return mMovies.size();
     }
 
-    void loadNewData(ArrayList<Movie> movies) {
+    void loadNewData(ArrayList<com.amressam.movies.Movie> movies) {
         this.mMovies = movies;
         notifyDataSetChanged();
     }

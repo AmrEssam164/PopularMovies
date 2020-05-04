@@ -28,6 +28,7 @@ public class ReviewFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mReviewFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.review_fragment,container,false);
         View view = mReviewFragmentBinding.getRoot();
+        setReviewRecyclerViewAdapter();
         return view;
     }
 
