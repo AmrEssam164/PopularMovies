@@ -19,17 +19,21 @@ import java.net.URL;
 
 public class AppSyncTask {
 
+    public static final String FIRST_TASK = "first";
+    public static final String SECOND_TASK = "second";
+    public static final String THIRD_TASK = "third";
+
     synchronized public static void syncMovies(Context context) {
 
         try {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-            int result = sharedPreferences.getInt("NIDO", -100);
+            int result = sharedPreferences.getInt(FIRST_TASK, -100);
             if (result == -100) {
-                sharedPreferences.edit().putInt("NIDO", 1).apply();
+                sharedPreferences.edit().putInt(FIRST_TASK, 1).apply();
             } else {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 result += 1;
-                editor.putInt("NIDO", result);
+                editor.putInt(FIRST_TASK, result);
                 editor.apply();
             }
 
@@ -86,13 +90,13 @@ public class AppSyncTask {
     synchronized public static void syncCast(Context context) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        int result = sharedPreferences.getInt("MORA", -100);
+        int result = sharedPreferences.getInt(SECOND_TASK, -100);
         if (result == -100) {
-            sharedPreferences.edit().putInt("MORA", 1).apply();
+            sharedPreferences.edit().putInt(SECOND_TASK, 1).apply();
         } else {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             result += 1;
-            editor.putInt("MORA", result);
+            editor.putInt(SECOND_TASK, result);
             editor.apply();
         }
 
@@ -142,13 +146,13 @@ public class AppSyncTask {
 
     synchronized public static void syncTrailers(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        int result = sharedPreferences.getInt("NONA", -100);
+        int result = sharedPreferences.getInt(THIRD_TASK, -100);
         if (result == -100) {
-            sharedPreferences.edit().putInt("NONA", 1).apply();
+            sharedPreferences.edit().putInt(THIRD_TASK, 1).apply();
         } else {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             result += 1;
-            editor.putInt("NONA", result);
+            editor.putInt(THIRD_TASK, result);
             editor.apply();
         }
         ContentResolver contentResolver = context.getContentResolver();

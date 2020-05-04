@@ -81,14 +81,6 @@ public class MoviesActivity extends AppCompatActivity {
             mMoviesRecyclerViewAdapter.loadNewData(movies);
         }
 
-
-//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        int x = sharedPreferences.getInt("NIDO",-200);
-//        Toast.makeText(this,"Data downloaded "+x+" times",Toast.LENGTH_LONG).show();
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        int x = sharedPreferences.getInt("NONA",-200);
-        Toast.makeText(this,"Data downloaded "+x+" times",Toast.LENGTH_LONG).show();
-
         AppSyncUtils.initialize(this);
 
     }
