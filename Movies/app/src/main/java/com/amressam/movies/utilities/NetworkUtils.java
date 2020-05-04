@@ -15,7 +15,6 @@
  */
 package com.amressam.movies.utilities;
 
-import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
@@ -24,12 +23,10 @@ import com.amressam.movies.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Scanner;
 
 public final class NetworkUtils {
 
@@ -47,7 +44,7 @@ public final class NetworkUtils {
     private static final String max_num = "3";
 
     final static String YOUTUBE_API_KEY = "key";
-    private static final String youtube_key= MoviesActivity.mResource.getString(R.string.youtube_api_key);
+    private static final String youtube_key= MoviesActivity.mResource.getString(R.string.YOUTUBE_API_KEY);
 
     private static final String BASE_MOVIE_URL =
             "http://api.themoviedb.org/3/movie";
@@ -59,7 +56,7 @@ public final class NetworkUtils {
             "http://api.themoviedb.org/3/movie/top_rated";
 
     final static String MOVIES_API_key = "api_key";
-    private static final String movies_key=MoviesActivity.mResource.getString(R.string.movies_api_key);
+    private static final String movies_key=MoviesActivity.mResource.getString(R.string.MOVIES_API_KEY);
 
 
     public static URL buildYoutubeUrl(String movie_title) {

@@ -17,7 +17,6 @@ import com.amressam.movies.MovieDetialsActivity;
 import com.amressam.movies.R;
 import com.amressam.movies.Trailer;
 import com.amressam.movies.TrailerRecyclerViewAdapter;
-import com.amressam.movies.YoutubeActivity;
 import com.amressam.movies.databinding.TrailerFragmentBinding;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 
@@ -41,7 +40,7 @@ public class TrailerFragment extends Fragment implements TrailerRecyclerViewAdap
     @Override
     public void onTrailerClicked(String video_id) {
         Intent intent = null;
-        intent = YouTubeStandalonePlayer.createVideoIntent(Objects.requireNonNull(getActivity()), getResources().getString(R.string.youtube_api_key), video_id, 0, true, true);
+        intent = YouTubeStandalonePlayer.createVideoIntent(Objects.requireNonNull(getActivity()), getResources().getString(R.string.YOUTUBE_API_KEY), video_id, 0, true, true);
         if (intent != null) {
             startActivity(intent);
         }
