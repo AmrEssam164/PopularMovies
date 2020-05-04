@@ -6,8 +6,8 @@
 | ![1](screenshots/Popular.PNG?raw=true) | ![2](screenshots/Top_rated.PNG?raw=true) | ![3](screenshots/Favourites.PNG?raw=true) |
 | Movie Details | Overview&Cast |  Trailers |
 | ![4](screenshots/Movie_details.PNG?raw=true) | ![5](screenshots/Overview_cast.PNG?raw=true) | ![6](screenshots/Trailers.PNG?raw=true) |
-| Reviews |
-| ![7](screenshots/Reviews.PNG?raw=true) |
+| Youtube Player | Reviews |
+| ![7](screenshots/Youtube.PNG?raw=true) | ![8](screenshots/Reviews.PNG?raw=true) |
 
 ## 🚀 Getting Started
 
